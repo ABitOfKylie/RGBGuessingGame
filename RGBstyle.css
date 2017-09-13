@@ -1,8 +1,8 @@
 body{
-	background-color: #fff;
+	background-color: #232323;
 	margin: 0;
-/*	font-family: "Montserrat", "Avenir";
-*/}
+	font-family: "Montserrat", "Avenir";
+}
 
 .container{
 	margin: 0px auto;
@@ -36,6 +36,7 @@ h1{
 
 button{
 	border:none;
+	outline: none;
 	background:none;
 	text-transform: uppercase;
 	height:100%;
