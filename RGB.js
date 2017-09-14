@@ -1,4 +1,4 @@
-var numSquares = 6;
+var numSquares = 9;
 var colors = [];
 var pickedColor; //this will be a string
 var squares = document.querySelectorAll(".square");
@@ -8,6 +8,11 @@ var messageDisplay = document.getElementById("message");
 var h1 = document.querySelector("h1");
 var newColors= document.getElementById("resetColors");
 var modeButtons = document.querySelectorAll(".mode");
+var minutes, seconds, timer, totalTime;
+var counter = setInterval(timer, 1000);
+var duration = 1;
+var zeroLeft ="Done";
+
 
 
 init();
@@ -24,13 +29,17 @@ function setUpModeButtons(){
 		modeButtons[i].addEventListener("click", function(){
 			modeButtons[0].classList.remove("selected");
 			modeButtons[1].classList.remove("selected");
+			modeButtons[2].classList.remove("selected");
 			this.classList.add("selected");
 			// this.textContent === "Easy" ? numSquares =3: numSquares = 6; ternary operator 
 			if(this.textContent === "Easy"){
 				numSquares = 3;
-			}else{
+			}else if(this.textContent === "Hard"){
 				numSquares = 6;
+			}else{
+				numSquares = 9;
 			}
+
 			reset();
 		});
 	}
@@ -44,7 +53,7 @@ function setUpSquares(){
 			var clickedColor = this.style.backgroundColor; // don't use func in a loop, this not recognized
 			if(clickedColor === pickedColor){
 				messageDisplay.textContent = "Correct!";
-				newColors.textContent = "Play Again?"
+				newColors.textContent = "Play Again?";
 				changeColors(clickedColor); //pass in clickedColor but it works without it
 				h1.style.backgroundColor = clickedColor;
 			}else{
@@ -113,4 +122,10 @@ function randomColor(){
 	return "rgb(" + r + ", " + g + ", " + b + ")";
  }
 
-
+//timer looks like 01:02 rather than 1:2
+function zeros(i) {
+if (i < 10) {
+    i = "0" + i;
+}
+return i;
+}
