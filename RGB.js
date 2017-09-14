@@ -1,15 +1,7 @@
-// var colors = [
-// 	"rgb(255, 0, 0)",
-// 	"rgb(255, 255, 0)",
-// 	"rgb(0, 255, 0)",
-// 	"rgb(0, 255, 255)",
-// 	"rgb(0, 0, 255)",
-// 	"rgb(255, 0, 255)"
-// ];
-
-var colors = generateRandomColors(6);
+var numSquares = 6;
+var colors = [];
+var pickedColor; //this will be a string
 var squares = document.querySelectorAll(".square");
-var pickedColor = colorPicker(); //this will be a string
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.getElementById("message");
 // var messageDisplay = querySelector("#message"); alternatively
@@ -17,20 +9,50 @@ var h1 = document.querySelector("h1");
 var newColors= document.getElementById("resetColors");
 var modeButtons = document.querySelectorAll(".mode");
 
-for (var i = 0; i < modeButtons.length; i++) {
-	modeButtons[i].addEventListener("click", function(){
-		modeButtons[0].classList.remove("selected");
-		modeButtons[1].classList.remove("selected");
-		this.classList.add("selected");
-		// this.textContent === "Easy" ? numSquares =3: numSquares = 6; ternary operator 
-		if(this.textContent === "Easy"){
-			numSquares = 3;
-		}else{
-			numSquares = 6;
-		}
 
-		reset();
-	});
+init();
+
+function init(){
+	setUpModeButtons();
+	setUpSquares();
+	reset();
+}
+
+function setUpModeButtons(){
+	for (var i = 0; i < modeButtons.length; i++) {
+		//step one add mode button listeners 
+		modeButtons[i].addEventListener("click", function(){
+			modeButtons[0].classList.remove("selected");
+			modeButtons[1].classList.remove("selected");
+			this.classList.add("selected");
+			// this.textContent === "Easy" ? numSquares =3: numSquares = 6; ternary operator 
+			if(this.textContent === "Easy"){
+				numSquares = 3;
+			}else{
+				numSquares = 6;
+			}
+			reset();
+		});
+	}
+}
+
+function setUpSquares(){
+	for(var i=0; i<squares.length; i++){
+		//add click listeners to squares
+		squares[i].addEventListener("click", function(){
+		//grab color of clicked color & compare to picked color
+			var clickedColor = this.style.backgroundColor; // don't use func in a loop, this not recognized
+			if(clickedColor === pickedColor){
+				messageDisplay.textContent = "Correct!";
+				newColors.textContent = "Play Again?"
+				changeColors(clickedColor); //pass in clickedColor but it works without it
+				h1.style.backgroundColor = clickedColor;
+			}else{
+				this.style.backgroundColor = "#232323"; //steelblue
+				messageDisplay.textContent = "Try Again";
+			}
+		});
+	}
 }
 
 function reset(){
@@ -56,26 +78,7 @@ newColors.addEventListener("click", function(){
 	reset();
 });
 
-colorDisplay.textContent = pickedColor;
-
-for(var i=0; i<squares.length; i++){
-	//add initial colors to squares
-	squares[i].style.backgroundColor = colors[i];
-	//add click listeners to squares
-	squares[i].addEventListener("click", function(){
-	//grab color of clicked color & compare to picked color
-		var clickedColor = this.style.backgroundColor; // don't use func in a loop, this not recognized
-		if(clickedColor === pickedColor){
-			messageDisplay.textContent = "Correct!";
-			newColors.textContent = "Play Again?"
-			changeColors(clickedColor); //pass in clickedColor but it works without it
-			h1.style.backgroundColor = clickedColor;
-		}else{
-			this.style.backgroundColor = "#232323"; //steelblue
-			messageDisplay.textContent = "Try Again";
-		}
-});
-}
+// colorDisplay.textContent = pickedColor; is now done inside the init function calling reset.
 
 function changeColors(color){
 	//loop thru all sq
