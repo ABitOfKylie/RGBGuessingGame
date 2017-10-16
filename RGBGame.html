@@ -1,34 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>RGB Guessing Game</title>
-	<link rel="stylesheet" type="text/css" href="RGBstyle.css">
+    <meta charset="UTF-8">
+    <title>RGB Guessing Game</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="RGBstyle.css">
 </head>
+
 <body>
-	<h1>The Remarkable 
-		<br>
-		<span id = "colorDisplay">RGB</span> 
-		<br>
-	Game</h1>
+    <h1>The Remarkable RGB Game
+		<br>    
+		<span id = "colorDisplay"></span> 
+	<br>
+		<!-- Trigger/Open The Modal -->
+    <div>
+		<button id="gameInfo">How To Play</button>
+    </div>
+		<!-- The Modal -->
+		<div id="howToModal" class="modal">
 
-	<div id="stripe">
-		<button id="resetColors">New Colors</button>
-		<span id="message"></span>
-		<button class="mode">Easy</button>
-		<button class="mode selected">Hard</button>
-		<button class="mode">Expert</button>
-
-	</div>
-		<div class = "container">
-			<div class = "square"></div>
-			<div class = "square"></div>
-			<div class = "square"></div>
-			<div class = "square"></div>
-			<div class = "square"></div>
-			<div class = "square"></div>
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		  	<div class="modal-header">
+			    <span class="close"><i class="fa fa-window-close" aria-hidden="true"></i>
+</span>
+			    <h2>What Is RGB and How To Play</h2>
+  			</div>
+  			<div class="modal-body">
+		    	<p>RGB (red, green, and blue) refers to a system for representing the colors used on a computer display. Red, green, and blue can be combined in various proportions to obtain any color in the visible spectrum. Each parameter (red, green, and blue) defines the intensity of the color and can be an integer between 0 and 255. Click image below for more detailed information.</p> 
+		    	<br>
+		    	<p><span class = "emphasis">How to Play </span>Each time you choose new colors, a new RGB number will appear in the header. Click on the color square that you think is the correct answer. 
+            <br>Hint: RGB ( 255, 0, 0) would be a bright red color.</p>
+		  </div>
+		  	<div class="modal-footer">
+            <figure>
+    			<h3><a href="https://www.rgbworld.com/color.html" target="blank"><img src="rgbVenn.png" alt="rgb color wheel" height="80" width="80"></a></h3> 
+                <figcaption> More RGB Info</figcaption>
+            </figure>
+  			</div>
 		</div>
-
-<script type = "text/javascript" src = "RGB.js"></script>
+	</h1>
+    <div id="banner">
+        <button id="resetColors">New Colors</button>
+        <span id="message"></span>
+        <button class="mode">Easy</button>
+        <button class="mode selected">Hard</button>
+        <button class="mode">Expert</button>
+        <button id="startBtn">Start Timer</button>
+        <span id="timer">50 secs</span>
+    </div>
+    <div class="levelBtn">
+    </div>
+    <div class="container">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
+    <script type="text/javascript" src="RGB.js"></script>
 </body>
+
 </html>

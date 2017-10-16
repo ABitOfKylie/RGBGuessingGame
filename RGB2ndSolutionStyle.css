@@ -1,0 +1,90 @@
+body {
+	background-color: #232323;
+	margin: 0;
+	padding-top: 25px;
+	font-family: "Roboto";
+}
+h1 {
+	color: white;
+	width: 100%;
+	font-size: 200%;
+	text-align: center;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+h2 {
+	font-size: 150%;
+	margin: 0;
+	color: #232323;
+	text-align: center;
+}
+input {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+label {
+	margin-right: 20px;
+	cursor: pointer;
+}
+.square {
+	display: none;
+	background: purple;
+	float: left;
+	cursor: pointer;
+/*   border: 2px solid white; */
+	border-radius: 15%;
+	transition: background 0.5s;
+}
+.squares3x3 {
+	width: 30%;
+	padding-bottom: 30%;
+	margin: 1.66%;
+}
+.squares4x4 {
+	width: 23%;
+	padding-bottom: 23%;
+	margin: 1%;
+}
+.start {
+	width: 68px;
+	padding: 0;
+	margin: 0 auto;
+}
+#container {
+	margin: 0 auto;
+	max-width: 600px;
+	max-height: 600px;
+}
+#colorDisplay {
+	font-size: 180%;
+}
+#myModalLabel {
+	background: #232323;
+	border-radius: 5px;
+}
+#myModalFooter {
+	width: 100%;
+	height: 40px;
+	font-size: 150%;
+	font-weight: bold;
+	color: white;
+	background: #232323;
+	border: 0;
+	border-radius: 5px;
+}
+@media only screen and (max-width: 734px) {
+  h1 {
+    font-size: 150%;
+  }
+  h2 {
+    font-size: 150%;
+  }
+  input {
+    width: 15px;
+    height: 15px;
+  }
+  label {
+    font-size: 70%;
+  }
+}

@@ -2,14 +2,101 @@ body{
 	background-color: #232323;
 	margin: 0;
 	font-family: "Montserrat", "Avenir";
-}
+/*	padding-top: 20px;
+*/}
 
 .container{
-	margin: 0px auto;
-	max-width: 800px;
-	max-height: auto;
+	margin: 0 auto;
+	max-width: 700px;
+	max-height: 60px;
 }
 
+h1{
+	text-align: center;
+/*	line-height:1.1;
+*/	font-weight: normal;
+	font-size: 200%;
+	color: white;
+	background: steelblue;
+	margin: 0;
+	text-transform: uppercase;
+	padding-top: 20px;
+	margin-bottom: 15px;
+}
+h3{
+	margin:0;
+}
+
+.emphasis{
+	font-weight:bold;
+	font-size: 18px;
+}
+
+#gameInfo{
+	font-size:15px;
+	border-radius:2px;
+	margin-left:10px;
+	float:left;
+	padding:10px;
+}
+button{
+	border:none;
+	outline: none;
+	background:lightsteelblue;
+	text-transform: uppercase;
+	height:100%;
+	font-weight:700;
+	color:black;
+	padding:0.5em;
+
+}
+
+p {
+	text-align:justify;
+}
+.levelBtn{
+	float:right;
+}
+
+#banner{
+	height: 30px;
+	text-align: center;
+	color: black;
+	margin: 0, 5px;
+}
+#message{
+	display: inline-block;
+	width: 15%;
+	color: lightsteelblue;
+	font-size:22px;
+}
+
+#info{
+	padding-left:10px;
+	float:left;
+}
+
+#timer{
+	color: white;
+	background-color: steelblue;
+	font-size:13px;
+	padding:0.5em;
+}
+
+.selected {
+	color: white;
+	background-color: steelblue;
+}
+
+.mode{
+	width:85px;
+}
+
+/*#squareSection{
+	margin: 0 auto;
+	max-width: 600px;
+	max-height: 60px;
+}*/
 
 .square {
 	width:30%;
@@ -24,41 +111,65 @@ body{
 	-moz-transition: background 0.6s;
 }
 
-h1{
-	text-align: center;
-	line-height:1.1;
-	font-weight: normal;
-	color: white;
-	background: steelblue;
-	margin: 0;
-	text-transform: uppercase;
-	padding: 20px 0;
-}
+.squareExpert {
+	width:15%;
+	background-color: blue;
+	border-radius: 15%;
+	margin: 1.66%;
+	padding-bottom: 15%;
+	float:left;
 
-button{
-	border:none;
-	outline: none;
-	background:none;
-	text-transform: uppercase;
-	height:100%;
-	font-weight:700;
-	color:steelblue;
+	transition: background 0.6s;
+	-webkit-transition: background 0.6s;
+	-moz-transition: background 0.6s;
 }
-
-#stripe{
-	background: white;
-	height: 30px;
-	text-align: center;
-	color: black;
-}
-#message{
-	display: inline-block;
-	width: 20%;
-	color: darkblue;
-}
-
 .selected {
 	color: white;
 	background-color: steelblue;
 }
 
+
+/*#info{
+	padding-left:10px;
+	float:left;
+}*/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: steelblue; /* Fallback color */
+    background-color: rgba(0,0,150,0.1); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    margin: 12% auto; /* 12% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 52%; 
+    text-transform: none;
+    background-color: steelblue;
+    font-size:15px;
+    text-align:center;
+}
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    margin:0;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
