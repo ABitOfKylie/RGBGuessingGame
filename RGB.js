@@ -8,15 +8,14 @@ var messageDisplay = document.getElementById("message");
 var h1 = document.querySelector("h1");
 var newColors= document.getElementById("resetColors");
 var modeButtons = document.querySelectorAll(".mode");
-var minutes, seconds, timer, totalTime;
-var counter = setInterval(timer, 1000);
-var count = 50; // number of seconds
+
+var timeRemaining = 10; // number of seconds
 var start = document.getElementById("startBtn");
+var timer = document.getElementById("timer");
 
 var modal = document.getElementById('howToModal');
 var infoBtn = document.getElementById("gameInfo");
 var span = document.getElementsByClassName("close")[0];
-
 
 init();
 
@@ -58,7 +57,7 @@ function setUpSquares(){
 			var clickedColor = this.style.backgroundColor; // sublime says: don't use func in a loop, this not recognized
 			if(clickedColor === pickedColor){
 				messageDisplay.textContent = "Correct!";
-				newColors.textContent = "Play Again?";  // newColors = id newColors
+				newColors.textContent = "Play Again?";  // newColors = id resetColors
 				changeColors(clickedColor); 
 				h1.style.backgroundColor = clickedColor;
 			}else{
@@ -75,8 +74,7 @@ function reset(){
 	colorDisplay.textContent = pickedColor;
 	newColors.textContent = "New Colors"; // this refers to this reset btn newColors
 	messageDisplay.textContent = "";
-	// gridChange(numSquares); needs fixing
-
+	// gridChange(); see notes below line @185
 	// checking thru # of squares, if there is a color to 'paint' then show it, otherwise if no more colors - hide it
 	for(var i=0; i<squares.length; i++){
 		if(colors[i]){
@@ -94,10 +92,6 @@ newColors.addEventListener("click", function(){
 	reset();
 });
 
-start.addEventListener("click", function(){
-	alert('start button works');
-});
-
 function changeColors(color){
 	//loop thru all sq
 	for(var i=0; i<squares.length; i++){
@@ -111,16 +105,19 @@ function colorPicker (){
 	return colors [random];
 }
 
-// function gridChange(numSquares){
-// 		// Changes the grid/class from 2x3 to 3x5
-// 	if (numSquares === "15") {
-// 		$(squares).removeClass("square");
-// 		$(squares).addClass("squareExpert");
-// 	}else {
-// 		$(squares).removeClass("squareExpert");
-// 		$(squares).addClass("square");
-// 	}
-// }
+function gridChange(){
+		// Changes the grid/class from 2x3 to 3x5
+	if (numSquares === "15") {
+		squares.classList.remove("square");
+		squares.classList.add("squareExpert");
+	}else {
+		squares.classList.remove("squareExpert");
+		squares.classList.add("square");
+	}
+}
+	// mdn documentation:
+	// div.classList.remove("foo");
+	// div.classList.add("anotherclass");
 
 function generateRandomColors(num){
 	// make an array
@@ -142,6 +139,7 @@ function randomColor(){
 	return "rgb(" + r + ", " + g + ", " + b + ")";
  }
 
+//***********Modal Section *************
 // When the user clicks on the button, open the modal 
 infoBtn.addEventListener("click", function(){
     modal.style.display = "block";
@@ -152,56 +150,37 @@ infoBtn.addEventListener("click", function(){
 span.addEventListener("click", function(){
     modal.style.display = "none";
 });
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
+
 // When the user clicks anywhere outside of the modal, close it
 window.addEventListener("click", function(){
     if (event.target == modal) {
         modal.style.display = "none";
     }
-})
+});
 
+//*****************************************
 
+//***********Timer Section *************
 
-//timer looks like 01:02 rather than 1:2
-// function zeros(i) {
-// if (i < 10) {
-//     i = "0" + i;
-// }
-// return i;
-// }
+// start the 60 second countdown
+start.addEventListener("click", function(){
+	alert('start button is working - now call the timer function');
+	startTimer();
+});
 
-// info.addEventListener("click", function(){
-// 	alert("how to play button clicked - #info")
-// 	// info.modal("toggle");
-// });
-
-// start.addEventListener("click", function(){
-//   count=count-1;
-//   if (count <= 0){
-//      clearInterval(counter);
-//      return;
-//    }
-//     document.getElementById("timer").innerHTML=count + " secs"; // watch for spelling
-// });
-
-// --------------60 second count down timer -----------
-// <button onclick="onTimer()">Clickme</button>
-// <div id="mycounter"></div>
-// ----------
-// i = 60;
-// function onTimer() {
-//   document.getElementById('mycounter').innerHTML = i;
-//   i--;
-//   if (i < 0) {
-//     alert('You lose!');
-//		reset();
-//   }
-//   else {
-//     setTimeout(onTimer, 1000);
-//   }
-// }
+function startTimer(){
+	timer.innerHTML = timeRemaining;
+	timeRemaining --;
+	if(timeRemaining < 0){
+		alert("Your time is up");
+		timeRemaining = 10;
+		timer.innerHTML = timeRemaining;
+	}else{
+		setTimeout (startTimer, 1000);
+	}
+}
+// note setTimeout calls startTimer - recursive
+//*****************************************
 
 //---------notes on grid change -------
 //  created a separate function gridChange lines 111-120 and called it in the reset function line 75

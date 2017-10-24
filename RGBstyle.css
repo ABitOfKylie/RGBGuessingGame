@@ -63,6 +63,8 @@ p {
 	text-align: center;
 	color: black;
 	margin: 0, 5px;
+	align-items: center;
+	width:86%;
 }
 #message{
 	display: inline-block;

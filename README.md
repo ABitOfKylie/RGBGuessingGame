@@ -1,6 +1,7 @@
 # RGBGuessingGame
 This is based on a tutorial made by Colt Steele that can be found on Udemy.
-
+To hear the audio npm install howler or 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.core.min.js"></script>
 Thoughts and plans: 
 Add an expert mode  9 or 12 squares
 Add optional timer
